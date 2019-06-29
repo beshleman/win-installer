@@ -1072,7 +1072,7 @@ if __name__ == '__main__':
     os.environ['MICRO_VERSION'] = '2'
 
     if 'BUILD_NUMBER' not in os.environ.keys():
-        os.environ['BUILD_NUMBER'] = '102'
+        os.environ['BUILD_NUMBER'] = '200'
 
     if 'UPDATE_URL' not in os.environ.keys():
         os.environ['UPDATE_URL'] = ""
@@ -1226,7 +1226,7 @@ if __name__ == '__main__':
     
     make_mgmtagent_msi(outbuilds,signname)
 
-    record_version_details()
+    #record_version_details()
 
     #archive_build_input(archiveSrc)
 
