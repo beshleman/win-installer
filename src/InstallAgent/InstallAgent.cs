@@ -378,8 +378,7 @@ namespace InstallAgent
             }
 
             string[] certNames = {
-                "citrixsha1.cer",
-                "citrixsha256.cer",
+                "Vates.cer",
             };
 
             foreach (string certName in certNames)
