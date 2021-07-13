@@ -663,8 +663,8 @@ def build_diagnostics(source, output):
         data=myfile.read()
     data = re.compile(r"REM I18N.*REM ENDI18N", re.MULTILINE|re.DOTALL).sub("REM I18N\n"+
     "SET COMPANY="+branding.branding['manufacturer']+"\n"+
-    "SET TOOLPATH="+branding.branding['manufacturer']+"\\"+branding.branding['shortTools']+"\n"+
-    "SET REGKEY=Citrix\Xentools\n"+
+    "SET TOOLPATH="+branding.branding['manufacturer']+"\\\\"+branding.branding['shortTools']+"\n"+
+    "SET REGKEY=Citrix\\\\Xentools\n"+
     "SET REGCO=Citrix\n"+
     "SET INSTALLNAME="+branding.branding['shortTools']+"Installer"+"\n"+
     "SET GUESTLOGS="+branding.branding['manufacturerLong']+"\n"+
