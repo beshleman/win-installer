@@ -49,7 +49,20 @@ named
 *  xenvss
 
 Each subdirectory should have the relevent build output of it's associated component
-copied inside
+copied inside.  The expected tree looks like:
+
+        directory\xenvif\{x86,x64}\xenvif.sys
+        directory\xenvbd\{x86,x64}\xenvbd.sys
+        directory\xenvbd\{x86,x64}\xencrsh.sys
+        directory\xenvbd\{x86,x64}\xendisk.sys
+        directory\xennet\{x86,x64}\xennet.sys
+        directory\xeniface\{x86,x64}\xeniface.sys
+        directory\xeniface\{x86,x64}\xenagent.exe
+        directory\xeniface\{x86,x64}\liteagent.exe
+        directory\xenbus\{x86,x64}\xenbus.sys
+        directory\xenbus\{x86,x64}\xen.sys
+        directory\xenbus\{x86,x64}\xenfilt.sys
+        directory\xenbus\{x86,x64}\xenbus_monitor.exe
 
 Then use the following commands
 
