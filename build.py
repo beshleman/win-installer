@@ -327,6 +327,7 @@ def make_brand_dll(culture):
         file.write("RESOURCE_"+key+"="+value.replace("\\","\\\\")+"\n")
     file.close();
 
+
     buildsat_script = "proj" + os.sep + "buildsat." + culture+ ".bat"
     if os.path.exists(buildsat_script):
         os.remove(buildsat_script)
@@ -338,7 +339,7 @@ def make_brand_dll(culture):
     file.write("resgen.exe proj\\textstrings.txt proj\\textstrings.resources\n")
     #file.write("al.exe proj\\branding.mod /embed:proj\\textstrings.resources /embed:"+branding.bitmaps+"\\DlgBmp.bmp /t:lib /out:proj\\brandsat.dll\n")
     file.write("\"c:\windows\Microsoft.NET\Framework\\v3.5\csc.exe\" /out:BrandSupport\\"+BRANDSAT_DLL_NAME+"."+culture+".dll /target:library /res:proj\\textstrings.resources /res:"+outbuilds+"\\"+branding.bitmaps+"\\DlgBmp.bmp src\\branding\\branding.cs \n");
-    file.write("echo Built satellite dll at BrandSupport\\"+BRANDSAT_DLL_NAME+"\n")
+    file.write("echo Built satellite dll at BrandSupport\\"+BRANDSAT_DLL_NAME+"."+culture+".dll" +"\n")
     file.close();
     print (callfnout(buildsat_script))
 
@@ -503,7 +504,7 @@ def driverarchfiles_wxs(pack, driver, arch):
     return wxsfile
 
 agenttosign = [
-    'BrandSupport\\brandsat.dll',
+    'BrandSupport\\'+BRANDSAT_DLL_NAME+"."+branding.cultures['default']+".dll",
     'BrandSupport\\BrandSupport.dll',
     'installwizard\\netsettings\\Win32\\netsettings.exe',
     'installwizard\\netsettings\\x64\\netsettings.exe',
@@ -699,8 +700,6 @@ def setup_brandsat_dll(path,culture):
     shutil.copy(source_name,target_name)
 
 def make_mgmtagent_msi(pack,signname):
-
-
     wix=lambda f: os.environ['WIX']+"bin\\"+f
     bitmaps = ".\\src\\bitmaps"
     support_dll_path = "BrandSupport"
