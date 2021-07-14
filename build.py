@@ -94,7 +94,7 @@ cppheader = "branding.h"
 include ="include"
 
 signtool=os.environ['KIT']+"\\bin\\x86\\signtool.exe"
-timestamp="http://timestamp.verisign.com/scripts/timestamp.dll"
+timestamp="http://timestamp.digicert.com"
 BRANDSAT_DLL_NAME = "brandsat"
 #remembersignname = "Citrix Systems, Inc"
 
