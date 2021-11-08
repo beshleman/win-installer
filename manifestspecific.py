@@ -37,7 +37,6 @@ build_tar_source_files = {
        "xennet" : r'win-xennet/patchq/win-xennet-102/xennet.tar',
        "xeniface" : r'win-xeniface/8.2/win-xeniface-103/xeniface.tar',
        "xenvbd" : r'win-xenvbd/patchq/win-xenvbd-203/xenvbd.tar',
-       "xenvss" : r'win-xenvss/master/win-xenvss-18/xenvss.tar',
 }
 
 signed_drivers = { 

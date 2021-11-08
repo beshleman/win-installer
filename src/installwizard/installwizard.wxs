@@ -277,8 +277,6 @@
                         <File Id="Drivers64MSI" Compressed="no" DiskId="2" Source="XCP-ngXenDriversX64.msi" />
                         <File Id="Agent32MSI" Compressed="no" DiskId="2" Source="XCP-ngGuestAgentX86.msi" />
                         <File Id="Agent64MSI" Compressed="no" DiskId="2" Source="XCP-ngGuestAgentX64.msi" />
-                        <File Id="VssProv32MSI" Compressed="no" DiskId="2" Source="XCP-ngVssX86.msi" />
-                        <File Id="VssProv4MSI" Compressed="no" DiskId="2" Source="XCP-ngVssX64.msi" />
                     </Component>
                     <?if $(var.usecerts)=yes ?>
                     <Component Id="Certs" Guid="$(var.certs)">

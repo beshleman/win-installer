@@ -38,7 +38,7 @@ Const wsWaitUntilReturn = True
 'Following three list will be fixed in the compile Time, 'Define in build.py
 'Define the files in msi that are need to be signed
 Dim signFileArr: signFileArr = Array( ">>>INSERT-FILE-LIST-IN-MSI-HERE<<<")'like "brandsat.dll","BrandSupport.dll","qnetsettings.exe"
-'Dim signFileArr: signFileArr = Array( "brandsat.dll","BrandSupport.dll","NetSettings.exe","Dpriv.exe","ManagementAgentUpdater.exe","XenGuestLib.Dll","Interop.NetFwTypeLib.dll","Interop.TaskScheduler.dll","XenVss.dll","VssClient.dll","GuestAgent.exe","InstallAgent.exe","PInvokeWrap.dll","HelperFunctions.dll","HardwareDevice.dll","PVDriversRemoval.dll","Uninstall.Exe")'like "brandsat.dll","BrandSupport.dll","qnetsettings.exe"
+'Dim signFileArr: signFileArr = Array( "brandsat.dll","BrandSupport.dll","NetSettings.exe","Dpriv.exe","ManagementAgentUpdater.exe","XenGuestLib.Dll","Interop.NetFwTypeLib.dll","Interop.TaskScheduler.dll","GuestAgent.exe","InstallAgent.exe","PInvokeWrap.dll","HelperFunctions.dll","HardwareDevice.dll","PVDriversRemoval.dll","Uninstall.Exe")'like "brandsat.dll","BrandSupport.dll","qnetsettings.exe"
 
 'This array contain the binaries that need to be sign directly under current directory				         
 Dim signDirectArray:signDirectArray = Array(">>>INSERT-FILE-LIST-OUT-MSI-HERE<<<") ' like "Setup.exe" _

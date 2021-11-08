@@ -202,7 +202,6 @@ namespace InstallWizard
                 Trace.WriteLine("reg done");
 
                 DriverPackage DriversMsi;
-                MsiInstaller VssProvMsi;
                 MsiInstaller AgentMsi;
                 string installdir;
                 NSISItem InstallerNSIS;
@@ -211,7 +210,6 @@ namespace InstallWizard
                     Trace.WriteLine("64 Bit Install");
                     installdir = (string)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\XCP-ng\\XenToolsInstaller", "Install_Dir", Application.StartupPath);
                     DriversMsi = new DriverPackage((string)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\XCP-ng\\XenToolsInstaller", "MSISourceDir", Application.StartupPath), Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\XCP-ng\\XenToolsInstaller", "MSISourceDir", Application.StartupPath) + "citrixxendriversx64.msi");
-                    VssProvMsi = new MsiInstaller(Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\XCP-ng\\XenToolsInstaller", "MSISourceDir", Application.StartupPath) + "citrixvssx64.msi");
                     AgentMsi = new MsiInstaller(Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\XCP-ng\\XenToolsInstaller", "MSISourceDir", Application.StartupPath) + "citrixguestagentx64.msi");
 
                     InstallerNSIS = new NSISItem("Citrix XenTools", (string)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\XCP-ng\\XenToolsInstaller", "MSISourceDir", Application.StartupPath));
@@ -222,7 +220,6 @@ namespace InstallWizard
                     Trace.WriteLine("32 Bit Install");
                     installdir = (string)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\XCP-ng\\XenToolsInstaller", "Install_Dir", Application.StartupPath);
                     DriversMsi = new DriverPackage((string)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\XCP-ng\\XenToolsInstaller", "MSISourceDir", Application.StartupPath), Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\XCP-ng\\XenToolsInstaller", "MSISourceDir", Application.StartupPath) + "citrixxendriversx86.msi");
-                    VssProvMsi = new MsiInstaller(Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\XCP-ng\\XenToolsInstaller", "MSISourceDir", Application.StartupPath) + "citrixvssx86.msi");
                     AgentMsi = new MsiInstaller(Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\XCP-ng\\XenToolsInstaller", "MSISourceDir", Application.StartupPath) + "citrixguestagentx86.msi");
 
                     InstallerNSIS = new NSISItem("Citrix XenTools", (string)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\XCP-ng\\XenToolsInstaller", "MSISourceDir", Application.StartupPath));
@@ -258,11 +255,11 @@ namespace InstallWizard
                     InstallState.Progress = prog["installscore"][1] + prog["tempscore"][1];
 
                     if (InstallState.GotAgent &&
-                         ((InstallWizard.InstallerState.WinVersion.isServerSKU() && InstallState.GotVssProvider) || !InstallWizard.InstallerState.WinVersion.isServerSKU()) && 
+                         ((InstallWizard.InstallerState.WinVersion.isServerSKU() || !InstallWizard.InstallerState.WinVersion.isServerSKU()) && 
                          InstallState.GotDrivers &&
                          !InstallState.RebootNow &&
                          InstallState.NsisFree &&
-                         !InstallState.NeedsReboot)
+                         !InstallState.NeedsReboot))
                     {
                         Trace.WriteLine("Everything is installed");
                         InstallState.Installed = true;
@@ -391,56 +388,6 @@ namespace InstallWizard
                     {
                         InstallState.Fail("Unknown PV drivers installed on system.  Uninstall PV drivers and retry");
                         continue;
-                    }
-
-
-                    if (InstallWizard.InstallerState.WinVersion.isServerSKU())
-                    {
-                        if ((!InstallState.GotVssProvider) && (InstallState.NsisFree) && (!InstallState.NsisHandlingRequired))
-                        {
-                            Trace.WriteLine("Checking Vss Provider");
-                            if (!VssProvMsi.installed())
-                            {
-                                Trace.WriteLine("Vss Provider not found, installing");
-                                Trace.WriteLine(VssProvMsi.ToString());
-                                try
-                                {
-                                    VssProvMsi.install("INSTALLDIR=" + installdir, "vssprov1msi", InstallState);
-                                }
-                                catch (InstallerException e)
-                                {
-                                    InstallState.Fail("Failed to install Vss  Provider : " + e.ErrorMessage);
-                                    continue;
-                                }
-
-                            }
-                            else if (VssProvMsi.olderinstalled())
-                            {
-                                Trace.WriteLine("Old Vss Provider found, updating");
-                                try
-                                {
-                                    VssProvMsi.install("INSTALLDIR=" + installdir, "vssprov2msi", InstallState);
-                                }
-                                catch (InstallerException e)
-                                {
-                                    InstallState.Fail("Failed to install Vss Provider : " + e.ErrorMessage);
-                                    continue;
-                                }
-                            }
-                            else
-                            {
-                                Trace.WriteLine("Correct Vss Provider found");
-                                InstallState.GotVssProvider = true;
-                            }
-                        }
-                        else
-                        {
-                            Trace.WriteLine("No VSS Work");
-                        }
-                    }
-                    else
-                    {
-                        Trace.WriteLine("No ServerSKU Work");
                     }
 
                     if ((!InstallState.GotAgent) && (InstallState.NsisFree) && (!InstallState.NsisHandlingRequired))

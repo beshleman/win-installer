@@ -6,8 +6,6 @@ To install the XenServer Windows Tools Installer Packages on a Windows Guest VM
 
 * *    citrixguestagentx64.msi
 * *    citrixguestagentx86.msi
-* *    citrixvssx64.msi
-* *    citrixvssx86.msi
 * *    citrixxendriversx64.msi
 * *    citrixxendriversx86.msi
 * *    installwizard.msi

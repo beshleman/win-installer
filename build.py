@@ -49,7 +49,9 @@ import os.path
 import urllib.parse
 import posixpath
 
-BRAND_BUILD_SUBPROJECTS=["xenguestagent","xenvss"]
+BRAND_BUILD_SUBPROJECTS = [
+    "xenguestagent",
+]
 
 (brandingFile, brandingPath, brandingDesc) = imp.find_module("branding",["src\\branding"])
 branding = imp.load_module("branding",brandingFile,brandingPath,brandingDesc)
@@ -149,9 +151,6 @@ def signdrivers(pack, signname, arch, additionalcert, signstr=None, crosssignstr
         pack+"\\xenguestagent\\xenupdater\\Interop.TaskScheduler.dll",
         pack+"\\xenguestagent\\xendpriv\\XenDpriv.exe",
         pack+"\\xenvif\\"+arch+"\\xenvif_coinst.dll",
-        pack+"\\xenvss\\"+arch+"\\vssclient.dll", 
-        pack+"\\xenvss\\"+arch+"\\vsstest.exe", 
-        pack+"\\xenvss\\"+arch+"\\xenvss.dll", 
         pack+"\\xenvbd\\"+arch+"\\xenvbd_coinst.dll",
         pack+"\\xennet\\"+arch+"\\xennet_coinst.dll",
         pack+"\\xenbus\\"+arch+"\\xenbus_coinst.dll",
@@ -392,7 +391,6 @@ def make_builds(pack, outbuilds):
         shutil.copytree(pack+"\\xenbus", outbuilds+"\\xenbus")
         shutil.copytree(pack+"\\xeniface", outbuilds+"\\xeniface")
         shutil.copytree(pack+"\\xenguestagent", outbuilds+"\\xenguestagent")
-        shutil.copytree(pack+"\\xenvss", outbuilds+"\\xenvss")
         shutil.copytree(pack+"\\vmcleaner", outbuilds+"\\vmcleaner")
 
 def make_installer_builds(pack, outbuilds):
@@ -515,10 +513,6 @@ agenttosign = [
     "xenguestagent\\xenguestagent\\XenGuestLib.Dll" ,
     "xenguestagent\\xenguestagent\\Interop.NetFwTypeLib.dll", 
     "xenguestagent\\xenupdater\\Interop.TaskScheduler.dll",
-    'xenvss\\x64\\xenvss.dll',
-    'xenvss\\x86\\xenvss.dll',
-    'xenvss\\x64\\vssclient.dll', 
-    'xenvss\\x86\\vssclient.dll', 
     "xenguestagent\\xenguestagent\\xenguestagent.exe",
     "InstallAgent\\InstallAgent.exe",
     "Libraries\\PInvokeWrap.dll",

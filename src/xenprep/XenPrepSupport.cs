@@ -396,7 +396,6 @@ namespace Xenprep
             // MSIs to uninstall
             string[] msiNameList = {
                 "XCP-ng XenServer Windows Guest Agent",
-                "XCP-ng XenServer VSS Provider",
                 "XCP-ng Xen Windows x64 PV Drivers",
                 "XCP-ng Xen Windows x86 PV Drivers",
                 "XCP-ng XenServer Tools Installer"

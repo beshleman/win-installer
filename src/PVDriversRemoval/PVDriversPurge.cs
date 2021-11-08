@@ -201,8 +201,6 @@ namespace PVDriversRemoval
             var msiList = new[] {
                 new { name = Branding.GetString("BRANDING_installerProductName"), //"Citrix XenServer Tools Installer",
                       args = "/qn"},
-                new { name = Branding.GetString("BRANDING_vssLong"), //""Citrix XenServer VSS Provider",
-                      args = "/qn /norestart"},
                 new { name = Branding.GetString("BRANDING_hypervisorAndOs")+" x64 "+Branding.GetString("BRANDING_pvDrivers"), // "Citrix Xen Windows x64 PV Drivers",
                       args = "/qn /norestart"},
                 new { name = Branding.GetString("BRANDING_hypervisorAndOs")+" x86 "+Branding.GetString("BRANDING_pvDrivers"), // "Citrix Xen Windows x86 PV Drivers",

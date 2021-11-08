@@ -37,7 +37,6 @@ build_tar_source_files = {
         "xennet": r"win-xennet/patchq/win-xennet-64/xennet.inspur.signed.tar",
         "xeniface": r"win-xeniface/patchq/win-xeniface-102/xeniface.inspur.signed.tar",
         "xenvbd": r"win-xenvbd/patchq/win-xenvbd-203/xenvbd.signed.tar", 
-        "xenvss" : r'win-xenvss/master/win-xenvss-18/xenvss.tar',
 }
 
 signed_drivers = {

@@ -46,7 +46,6 @@ named
 *  xenvif
 *  xennet
 *  xenvbd
-*  xenvss
 
 Each subdirectory should have the relevent build output of it's associated component
 copied inside.  The expected tree looks like:

@@ -996,9 +996,8 @@ namespace InstallWizard
             Failed = 1<< 22, // The install has failed.  Service should be set to manual restart
             Rebooting = 1<<23, // We are now running the final apps before rebooting, or rebooting
             AutoShutdown = 1<< 24, // We want all future shutdowns to happen without user intervention
-            GotVssProvider = 1 << 25, // I have determined that the correct MSI installed vss provider is present
-            OneFinalReboot = 1 << 26, // We have been restored after one extra reboot has been scheduled.  Don't schedule another reboot.
-            NeedsReboot = 1 << 27, // We will have to reboot before we have finished, but should continue to poll for now
+            OneFinalReboot = 1 << 25, // We have been restored after one extra reboot has been scheduled.  Don't schedule another reboot.
+            NeedsReboot = 1 << 26, // We will have to reboot before we have finished, but should continue to poll for now
         }
         public bool Unchanged = true;
         
@@ -1411,18 +1410,6 @@ namespace InstallWizard
                 }
             }
 
-            if (WinVersion.isServerSKU())
-            {
-                if (GotVssProvider)
-                {
-                    text += "Vss Provider : Installed\n";
-                }
-                else
-                {
-                    text += "Vss Provider : Installing\n";
-                }
-            }
-
             if (GotAgent)
             {
                 text += "Guest Agent : Installed\n";
@@ -1455,7 +1442,6 @@ namespace InstallWizard
         public bool Done { set { setstate(States.Done, value); } get { return getstate(States.Done); } }
         public bool PauseOnStart { set { setstate(States.PauseOnStart, value); } get { return getstate(States.PauseOnStart); } }
         public bool RebootDesired { set { setstate(States.RebootDesired, value); } get { return getstate(States.RebootDesired); } }
-        public bool GotVssProvider { set { setstate(States.GotVssProvider, value); } get { return getstate(States.GotVssProvider); } }
         public bool OneFinalReboot { set { setstate(States.OneFinalReboot, value); } get { return getstate(States.OneFinalReboot); } }
         public bool Installed { 
             set {

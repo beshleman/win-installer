@@ -22,7 +22,6 @@ branding = {
         "guestAgent" : "XCP-ng Xen Guest Agent",
         "guestServiceShort" : "XenSvc",
         "guestServiceDesc" : "Monitors and provides various metrics to XenStore",
-        "vssLong" : "XCP-ng XenServer VSS Provider",
         "managementName" : "Windows Management Agent",
         "managementDesc" : "Installation and Update Agent",
         "installAgentShort" : "InstallAgent",
@@ -105,8 +104,6 @@ filenames = {
         "legacyuninstallerfix" : "xluninstallerfix.exe",
         "driversmsix86" : "XCp-ngXenDriversX86.msi",
         "driversmsix64" : "XCp-ngXenDriversX64.msi",
-        "vssmsix86" : "XCp-ngVssX86.msi",
-        "vssmsix64" : "XCp-ngVssX64.msi",
         "guestagentmsix86" : "XCp-ngGuestAgentX86.msi",
         "guestagentmsix64" : "XCp-ngGuestAgentX64.msi",
         "installwizard" : "InstallWizard.msi",
@@ -117,8 +114,6 @@ filenames = {
         "dprivcfg" : "XenDpriv.exe.config",
         "agent" : "XenGuestAgent.exe",
         "agentcfg" : "XenGuestAgent.exe.config",
-        "installVSS" : "install-XenProvider.cmd",
-        "uninstallVSS" : "uninstall-XenProvider.cmd",
 }
 
 filenames_in_msi_to_sign = [
@@ -132,10 +127,6 @@ filenames_in_msi_to_sign = [
     "xenguestagent\\xenguestagent\\XenGuestLib.Dll" ,
     "xenguestagent\\xenguestagent\\Interop.NetFwTypeLib.dll", 
     "xenguestagent\\xenupdater\\Interop.TaskScheduler.dll",
-    'xenvss\\x64\\xenvss.dll',
-    'xenvss\\x86\\xenvss.dll',
-    'xenvss\\x64\\vssclient.dll', 
-    'xenvss\\x86\\vssclient.dll', 
     "xenguestagent\\xenguestagent\\xenguestagent.exe",
     "InstallAgent\\InstallAgent.exe",
     "Libraries\\PInvokeWrap.dll",
